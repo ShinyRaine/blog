@@ -8,6 +8,7 @@ tags: [react,javascript]
 ## 初始化
 ### getInitialState()
 在组件挂载之前调用。在组件的生命周期中仅执行一次，用于设置组件的初始化 state 。返回值将会作为 this.state 的初始值。
+在使用es6写法中不需要写这个函数。初始化state要在class的constructor里直接写入this.state = {}。
 
 ## 挂载
 ### componentWillMount()
@@ -21,7 +22,9 @@ componentDidMount() 在初始化渲染执行之后立刻调用一次，仅客户
 在组件接收到新的 props 的时候调用。
 
 ### shouldComponentUpdate(object nextProps, object nextState)
-在接收到新的 props 或者 state，将要渲染之前调用。一般返回ture。如果性能是个瓶颈，尤其是有几十个甚至上百个组件的时候，使用 shouldComponentUpdate 可以提升应用的性能。
+在接收到新的 props 或者 state，将要渲染之前调用。一般返回ture。
+如果性能是个瓶颈，尤其是有几十个甚至上百个组件的时候，使用 shouldComponentUpdate 可以提升应用的性能。
+如果自行改写了这个函数，一定要有布尔类型的返回值。
 
 ### componentDidUpdate(object prevProps, object prevState)
 在组件的更新已经同步到 DOM 中之后立刻被调用。该方法不会在初始化渲染的时候调用。
@@ -29,4 +32,4 @@ componentDidMount() 在初始化渲染执行之后立刻调用一次，仅客户
 ## 移除
 ### componentWillUnmount()
 在组件从 DOM 中移除的时候立刻被调用。在该方法中执行任何必要的清理。
-动态更新界面的关键点就是调用 this.setState() 。
+动态更新界面的关键点就是调用。
