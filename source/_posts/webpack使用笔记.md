@@ -33,7 +33,7 @@ module.exports = {
     publicPath: '/assets/'        //访问输出文件的路径
   },
   plugins: [
-    new ExtractTextPlugin('style.css', {
+    new ExtractTextPlugin('style.css', { //将CSS编译成独立文件的插件
       disable: false,
       allChunks: true
     }),
@@ -55,4 +55,30 @@ module.exports = {
   }
 }
 
+```
+## 优化
+
+### chunkhash
+```
+filename: '[name].[chunkhash].js'
+```
+### 动态生成html
+使用 HtmlWebpackPlugin
+```
+new HtmlWebpackPlugin({
+  template: path.resolve(__dirname, 'index.tmpl'),
+  inject: true,
+  hash: false,
+  filename: '../index.html',
+  minify: false,
+  favicon: false,
+})
+```
+### UglifyJsPlugin
+```
+new webpack.optimize.UglifyJsPlugin({
+  compress: {
+    warnings: false,
+  }
+})
 ```
