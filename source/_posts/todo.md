@@ -21,3 +21,4 @@ tags:
 - https://developer.mozilla.org/en-US/docs/Web/API/ProgressEvent/ProgressEvent
 - dva saga https://github.com/dvajs/dva https://github.com/sorrycc/blog/issues/8
 - generator函数和async await
+- geolocation
