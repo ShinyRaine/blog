@@ -23,7 +23,7 @@ var insertSort = function(arr) {
 ```
 <!--more-->
 插入排序运行时间依赖于输入长度和它们已被排序的程度。
-最好的情况，输入数组已被排序，运行时间：an+b，是n的线性函数；最坏情况，输入数组反序，运行时间：an^2+bn+c,s n的2次函数。时间复杂度O(n^2)。
+最好的情况，输入数组已被排序，运行时间：an+b，是n的线性函数；最坏情况，输入数组反序，运行时间：an^2+bn+c,是 n的2次函数。
 
 ## 归并排序
 这个写了好久。。原理是把数组逐步分成更小的数组，最后就分成了只有一个元素的数组，再去合并这些已排序小数组。
@@ -48,7 +48,7 @@ var mergeSort = function(arr) {
 	if (arr.length == 1) {
 		return arr
 	}
-	var	q = Math.floor(arr.length / 2)
+	var q = Math.floor(arr.length / 2)
 	var arr1 = arr.slice(0, q),
 		arr2 = arr.slice(q)
 	var result = merge(mergeSort(arr1),mergeSort(arr2))
@@ -58,7 +58,7 @@ var mergeSort = function(arr) {
 最坏运行时间用递归式表示：T(n) = 2`*`T(2/n) + Θ(n) (n>1);T(n) = Θ(1) (n=1)。可利用主定理证明：时间复杂度为O(nlgn)。
 
 ## 堆排序
-首先讲输入数组建成最大堆。因为最大元素总在根节点处，每次将根节点提出放到正确的位置。
+首先将输入数组建成最大堆。因为最大元素总在根节点处，每次将根节点提出放到正确的位置。
 
 ```js
 var exchange = function (arr, i, j) {
@@ -120,8 +120,8 @@ var quickSort = function (arr) {
 }
 
 var partition = function(arr, p, r) {
-	x = arr[r]
-	i = p - 1
+	var x = arr[r]
+	var i = p - 1
 	for (var j = p; j < r; j++) {
 		if (arr[j] < x) {
 			i++
