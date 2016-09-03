@@ -218,5 +218,117 @@ var BigCommand = function() {
 ## 组合模式
 组合模式将对象组合生成树形结构，以表示“部分-整体”的层次结构。除了用来表示树形结构外，组合模式可以通过对象的多态性表现，使用户对单个对象和组合对象的使用具有一致性。用户请求从树的顶端对象向下传递，到达相应节点后进行相应的处理，这样，用户只需要关心顶层对象，像是上面的宏，叶对象只要都拥有叫做execute方法就可以了。
 组合模式的组合对象和叶对象是聚合关系（HAS-A），不是父子关系。组合对象和叶对象需要有相同的接口和操作的一致性。
+例子这里就不写了，知道组合对象很像上面那个宏就好了。
 
+## 模板方法模式
+模板方法模式基于继承，它包括两部分，一部分是抽象父类，一部分是具体实现的子类。在父类中封装了子类的算法框架，包括实现一些公共方法以及封装子类中所有方法的执行顺序。在JAVA语言中，父类是抽象类（abstract），不可生成实例，有一些抽象方法必须由子类去定义。父类中封装子类方法是如何去执行的方法叫做模板方法。
+由于js中并没有抽象类，没有办法保证子类会重写父类中的抽象方法，需要进行检查保证该方法是由子类创建的。
+在父类要变化的地方加上钩子（hook），钩子的返回结果决定了模板方法的步骤，这样程序就不再只适用于一种状况。
+好莱坞原则：允许底层组件将自己挂钩到高层组件，高层组件会决定什么时候、以何种方式使用底层组件。发布-订阅模式和模板方法木事都是这个原则的体现。
+
+```js
+var Beverage = function() {}
+Beverage.prototype.boil = function() {
+	console.log('烧水')
+}
+Beverage.prototype.brew = function() {
+	throw new Error('子类要重写brew')
+}
+Beverage.prototype.add = function() {
+	throw new Error('子类要重写add')
+}
+Beverage.prototype.needAdd = function() { //这是个钩子
+	return true
+}
+Beverage.prototype.init = function() {
+	this.boil()
+	this.brew()
+	if (this.needAdd()) {
+		this.add()
+	}
+}
+
+var Coffee = function() {}
+Coffee.prototype = new Beverage()
+Coffee.prototype.brew = function() {
+	console.log('冲咖啡')
+}
+Coffee.prototype.add = function() {
+	console.log('加糖')
+}
+
+var Tea = function() {}
+Tea.prototype = new Beverage()
+Tea.prototype.brew = function() {
+	console.log('泡茶')
+}
+Tea.prototype.add = function() {
+	console.log('加柠檬')
+}
+Tea.prototype.needAdd = function() {
+	return false
+}
+
+var coffee = new Coffee()
+coffee.init()
+var tea = new Tea()
+tea.init()
+```
+
+其实我感觉后面那种不用继承来，而用闭包和参数传递实现的模板方法模式更js。
+
+```js
+var Beverage = function(param) {
+	var boil = function() {
+		console.log('烧水')
+	}
+	var brew = param.brew || function() {
+		throw new Error('子类要重写brew')
+	}
+	var add = param.add || function() {
+		throw new Error('子类要重写add')
+	}
+	var needAdd = param.needAdd || function() { //这是个钩子
+		return true
+	}
+
+	var F = function(){}
+	F.prototype.init = function() {
+		boil()
+		brew()
+		if (needAdd()) {
+			add()
+		}
+	}
+	return F
+}
+
+
+var Coffee = Beverage({
+	brew : function() {
+	console.log('冲咖啡')
+	},
+	add : function() {
+		console.log('加糖')
+	}
+})
+
+var Tea = Beverage({
+	brew : function() {
+		console.log('泡茶')
+	},
+	add : function() {
+		console.log('加柠檬')
+	},
+	needAdd : function() {
+		return false
+	}	
+}) 
+
+
+var coffee = new Coffee()
+coffee.init()
+var tea = new Tea()
+tea.init()
+```
 <留坑>
