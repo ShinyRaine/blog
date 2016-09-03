@@ -211,5 +211,28 @@ var raidxSort = function (arr) {
 }
 ```
 ## 桶排序
-
-<没错我看的是算法导论,剩下一个的没时间了回学校更吧>
+将区间划分为n个相同大小的子区间，称为桶。然后将输入放入各个桶中，先对每个桶中的数排序，再遍历桶，把元素列出来。
+书中给出的桶排序是适用于[0,1)区间的，这里也写这样的。
+```js
+var bucketSort = function(arr) {
+	var n = arr.length
+	var b = new Array(10)
+	var result = []
+	for (var i = 0; i < n; i++) {
+		var j = Math.floor(arr[i] * 10)
+		if (b[j]) {
+			b[j].push(arr[i])
+		}else {
+			b[j] = [arr[i]]
+		}
+	}
+	for (var i = 0; i < b.length; i++) {
+		if (b[i]) {
+			b[i].sort()
+			console.log(b[i])
+			result = result.concat(b[i])
+		}
+	}
+	return result
+}
+```
