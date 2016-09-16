@@ -411,4 +411,101 @@ startUpload('plugin', [
 	}
 ])
 ```
-<留坑>
+## 职责链模式
+使多个对象都有机会处理请求，避免请求的发送者和接收者之间的耦合关系，将这些对象连成一条链，沿着链传递请求，指导有个对象处理它。
+职责链的传递函数可以写成下面这样。
+```js
+var after = function() {
+	var self = this
+	return function() {
+		var ret = self.apply(this,arguments)
+		if(ret === "nextSuccessor"){
+			return fn.apply(this,arguments)
+		} 
+
+		return ret
+	}
+}
+```
+## 中介者模式
+增加一个中介者对象后，所有的相关对象都通过中介者对象通信，而不是相互引用，实现了对象间的解耦。这也是一种一对多的关系。
+感觉这个很像发布-订阅模式，中介者作为一个订阅者，其他对象是发布者。实际上这也是实现中介者模式的一种方式。
+也可以让中介者提供接收消息的接口，其他对象通过接口发送消息，中介者将处理结果返回给对象来实现。
+中介者模式体现了最少知识原则，也就是耦合对象要少。
+中介者模式的不足之处在于中介者会随着逻辑的复杂越来越复杂，成为一个难以维护的对象。
+
+## 装饰者模式
+装饰者模式是一种动态地给对象增加职责的模式。
+对于JS来说，可以随时给对象添加新的方法。然而不能随意地修改函数，所以我们对函数使用装饰者，也就是给函数添加新的功能的函数。
+
+```js
+Function.prototype.before = function( beforefn ){
+	var _self = this
+	return function() {
+		beforefn.apply(this, arguments)
+		return _self.apply(this, arguments)
+	}
+}
+Function.prototype.after = function( afterfn ){
+	var _self = this
+	return function() {
+		var ret = _self.apply(this, arguments)
+		afterfn.apply(this, arguments)
+		return ret
+	}
+}
+
+```
+## 状态模式
+状态模式是区分事物的内部状态，事物的内部状态的改变往往会带来事物行为的改变。
+状态模式把对象的状态封装成单独的类，与此状态有关的行为被封装在这个类的内部。
+状态模式容易实现状态的转换和添加新的状态，去掉了对象中过多的条件分支。但是同时状态对象会变得很多，逻辑也不容易看出。
+
+```js
+var Light = function() {
+	this.offState = delegata(this, FSM.off)
+	this.onState = delegata(this, FSM.on)
+	this.currState = this.offState
+	this.button = null
+}
+Light.prototype.init = function() {
+	var button = document.createElement('button')
+	var self = this
+	button.innerHTML = '开'
+	console.log('关的')
+	this.button = document.body.appendChild(button)
+	this.button.onclick = function() {
+		self.currState.buttonPressed.call(self)
+	}
+}
+var delegata = function(client, delegation) {
+	return {
+		buttonPressed: function() {
+			return delegation.buttonPressed.apply(client, arguments)
+		}
+	}
+}
+// 这是一个状态机
+var FSM = {
+	off: {
+		buttonPressed: function() {
+			console.log('关了')
+			this.button.innerHTML = '开'
+			this.currState = this.onState
+		}
+	},
+	on: {
+		buttonPressed: function() {
+			console.log('开了')
+			this.button.innerHTML = '关'
+			this.currState = this.offState
+		}
+	}
+}
+var light = new Light()
+light.init()
+```
+## 适配器模式
+适配器模式解决两个接口不兼容问题。
+适配器相当于一个接口转换器，使用修改了的接口包装一下被适配的对象，使其适用于新的接口。嗯，很多时候就是改一下数据结构的事情。
+
