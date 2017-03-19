@@ -4,7 +4,7 @@ date: 2016-03-15 17:20:23
 tags: [hexo,markdown]
 ---
 
-我参考了[这个博客](http://zipperary.com/)中的hexo系列和[官方中文文档](https://hexo.io/zh-cn/docs/)。这里对此进行总结和补充，方便以后忘了某些命令的时候查看。
+我参考了[这个博客](http://www.zipperary.com/)中的hexo系列和[官方中文文档](https://hexo.io/zh-cn/docs/)。这里对此进行总结和补充，方便以后忘了某些命令的时候查看。
 
 ## 首先我写一些自己要记的命令
 建文章
