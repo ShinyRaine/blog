@@ -1,8 +1,7 @@
 ---
-title: about
+title: 个人信息
 date: 2017-03-19 18:30:15
 ---
-## 个人信息
 name: 程欣雨
 email: chxy_xinyu@163.com
 github: github.com/RizzleCi
@@ -15,6 +14,7 @@ blog: rizzleci.github.io
 - 了解项目构建工具webpack；了解css预编译工具Sass；
 - 了解jQuery、Zepto类库；
 - 熟悉基于git的工作模型，掌握常用的git命令，熟悉Linux工作环境；
+
 ## 相关经验
 ### 2015/12 - 2016/07 小米移动软件有限公司 前端实习
 - 使用React技术栈进行开发工作
