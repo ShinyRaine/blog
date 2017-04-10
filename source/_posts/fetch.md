@@ -26,7 +26,7 @@ headers对应了请求的头部信息。
 Fetch API 的Headers类允许你去对HTTP request和response headers执行各种操作。这些操作包括：检索, 设置, 添加和删除。
 ```javascript
 var reqHeaders = new Headers();
-reqHeaders.append("Content-Type", "text/plain"
+reqHeaders.append("Content-Type", "text/plain")
 reqHeaders.append("Content-Length", content.length.toString());
 reqHeaders.append("X-Custom-Header", "ProcessThisImmediately");
 ```
