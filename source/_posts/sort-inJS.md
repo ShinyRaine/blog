@@ -13,7 +13,7 @@ var insertSort = function(arr) {
 		key = arr[j]
 		i = j - 1
 		while (i > -1 && arr[i] > key) {
-			arr[i + 1] = arr[i]	
+			arr[i + 1] = arr[i]
 			i = i - 1
 		}
 		arr[i + 1] = key
@@ -105,20 +105,6 @@ var exchange = function (arr, i, j) {
 	arr[i] = arr[j]
 	arr[j] = temp
 }
-var quickSort = function (arr) {
-
-	var sort = function(arr, p, r) {
-		if (p<r) {
-			q = partition(arr, p, r)
-			sort(arr, p, q-1)
-			sort(arr, q+1, r)
-		}
-	}
-
-	sort(arr,0,arr.length-1)
-	
-}
-
 var partition = function(arr, p, r) {
 	var x = arr[r]
 	var i = p - 1
@@ -131,6 +117,18 @@ var partition = function(arr, p, r) {
 	exchange(arr,i+1,r)
 	return i+1
 }
+var quickSort = function (arr) {
+
+	var sort = function(p, r) {
+		if (p<r) {
+			q = partition(p, r)
+			sort(p, q-1)
+			sort(q+1, r)
+		}
+	}
+
+	sort(0, arr.length-1)
+}
 ```
 时间复杂度为O(nlgn)
 
@@ -141,7 +139,7 @@ var partition = function(arr, p, r) {
 var countSort = function (arr) {
 	var len = arr.length
 	var c = [], result = []
-	var max = 0 
+	var max = 0
 	for (var i = 0; i < len; i++) {
 		if (arr[i] > max) {
 			max = arr[i]
