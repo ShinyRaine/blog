@@ -70,28 +70,26 @@ str.replace(re,'*') // "c*x*y"
 ## RegExp类型
 有两种方式创建正则对象：字面量和构造函数。
 re = / pattern / flags
-patten是正则表达式。flags是标志，标明正则的行为
+patten是正则表达式。flags是标志，标明正则的行为。
+
 g：全局模式，找到所有的匹配项；
 i：不区分大小写；
-m：多行模式，到本行末尾还会继续查找。
+m：多行模式，到本行末尾还会继续查找；
+u：可识别Unicode字符；
+y：执行“粘性”匹配，仅匹配目标字符串中此正则表达式的lastIndex属性指示的索引。
+
 ```js
 var re = /\s/g
 var re = new RegExp('\s','g')
 var re = new RegExp(/\s/,'g')
-// 三种等价
+var re = new RegExp(/\s/g)
+// 四种等价
 ```
 ### RegExp的属性
-- $1,$2...获取引用项
-```js
-var re = /(\w+)/
-var str = 'sss,ttt'
-str.match(re)
-RegExp.$1 // "sss"
-```
-- lastMatch 最后匹配到的字符串
-- input $_ 匹配到的源字符串
-还有lastParen、leftContex、rightContext这些，不多做介绍了，不然这个博文就变成文档。### 原型属性
-- gloabal,ignoreCase,multiline分别表示是否设置g,i,m
+全局RegExp中有一些属性，如$1-$9、input、lastMatch、lastParen，这些属性已经被废弃，虽然目前来说这些还可以使用，但是还是忘了它们吧。
+
+### 原型属性
+- gloabal,ignoreCase,multiline,unicode,sticky分别表示是否设置g,i,m,u,y
 - source,flags分别返回表达式文本字符串和标志
 - lastIndex 下一次匹配开始位置
 
