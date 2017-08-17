@@ -127,7 +127,7 @@ var event = (function(){
 			for (var i = 0; i < fns.length; i++) {
 				if (fns[i] == fn) {
 					fns.splice(i,1)
-				} 
+				}
 			}
 		}
 	}
@@ -166,7 +166,6 @@ var LogCommand = function(receiver) {
 var logCommad = new LogCommand(receiver1)
 setCommand(button1, logCommad) //假设有个叫button1的按钮
 ```
-
 上面只是实现了能让一个命令的执行的命令模式。除此以外，命令模式需要可以进行撤销、重做、一次执行多个命令的功能。这样的话我们让command对象返回出execude方法（执行）、unexecude方法（撤销），添加一个堆栈来保存执行过的命令，使用一个大的对象（宏）来保存需要执行的命令。下面贴出一些例子。
 
 ```js
@@ -322,8 +321,8 @@ var Tea = Beverage({
 	},
 	needAdd : function() {
 		return false
-	}	
-}) 
+	}
+})
 
 
 var coffee = new Coffee()
@@ -421,7 +420,7 @@ var after = function() {
 		var ret = self.apply(this,arguments)
 		if(ret === "nextSuccessor"){
 			return fn.apply(this,arguments)
-		} 
+		}
 
 		return ret
 	}
@@ -508,4 +507,3 @@ light.init()
 ## 适配器模式
 适配器模式解决两个接口不兼容问题。
 适配器相当于一个接口转换器，使用修改了的接口包装一下被适配的对象，使其适用于新的接口。嗯，很多时候就是改一下数据结构的事情。
-
