@@ -5,6 +5,7 @@ tags: [react,javascript]
 ---
 # 生命周期
 自定义组件(ReactCompositeComponent)的生命周期主要通过 3 个阶段进行管理—— MOUNTING、RECEIVE_PROPS 和 UNMOUNTING，它们负责通知组件当前所处的阶段，应该执行生命周期中的哪个步骤。这 3 个阶段对应 3 种方法，分别为: mountComponent、updateComponent 和 unmountComponent，每个方法都提供了几种处理方法，其中带 will 前缀的方法在进入状态之前调用，带 did 前缀的方法在进入状态之后调用。
+<!--more-->
 ## 挂载
 getInitialState、componentWillMount、render 和 componentDidMount。
 

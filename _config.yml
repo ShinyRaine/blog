@@ -71,6 +71,3 @@ deploy:
   type: git
   repository: git@github.com:RizzleCi/rizzleci.github.io
   branch: master
-
-#多说
-duoshuo_shortname: rizzleci
