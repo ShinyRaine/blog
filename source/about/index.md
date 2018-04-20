@@ -2,22 +2,25 @@
 title: 个人信息
 date: 2017-03-19 18:30:15
 ---
-程欣雨/女/17年毕业
-期望职位：前端开发工程师
 
-tel: 13315592387
-email: chxy_xinyu@163.com
-github: github.com/RizzleCi
-blog: rizzleci.github.io
-## 教育背景
+## 教育
 2013/09 -- 2017/07 电子科技大学 光电信息科学与工程 学士
-## 专业技能
+<!-- ## 专业技能
 - 熟练掌握 HTML5、CSS3、JavaScript 开发，了解 ES6 规范；
 - 熟悉前端开发框架React，对React相关技术栈Redux有项目经验；
+- 熟悉Vue及相关技术栈；
 - 了解项目构建工具webpack；了解css预编译工具Sass；
 - 了解jQuery、Zepto类库；
-- 熟悉基于git的工作模型，掌握常用的git命令，熟悉Linux工作环境；
+- 熟悉基于git的工作模型，掌握常用的git命令，熟悉Linux工作环境； -->
+
 ## 相关经验
+### 2017/7 - 今 去哪儿网 前端开发
+**支撑系统工作**
+cloud部分开发
+
+**培训项目**
+问卷系统
+
 ### 2015/12 - 2016/07 小米移动软件有限公司 前端实习
 **使用React技术栈进行开发工作**
 先后开发了天眼系统、小米云分享相册和投诉系统。
@@ -28,13 +31,9 @@ blog: rizzleci.github.io
 **开发手机活动页面**
 股神争霸大赛和小米云月报及抽奖。使用rem进行布局，使用Zepto编写交互脚本、处理和渲染数据。
 
-### 2015/07 - 2015/08 腾讯大燕网 产品技术部 前端实习
-[大燕网河北财经频道](http://hb.jjj.qq.com/finance/)的改版工作，根据PSD实现页面的布局和动态效果；
-制作手机展示页面。
-
-### 2014/05 - 今 电子科大星辰工作室
-**尝试使用nodejs进行全栈开发**
-	2017/03 - 今 图书管理系统 使用express进行网站后台开发，使用mongodb数据库，前端应用React技术栈，尝试应用webpack2作为打包工具。[项目仓库](https://github.com/RizzleCi/Library-manager)
+### 2014/05 - 2017/06 电子科大星辰工作室
+**使用nodejs进行全栈开发**
+	2017/03 - 2017/05 图书管理系统 使用express进行网站后台开发，使用mongodb数据库，前端应用React技术栈，尝试应用webpack2作为打包工具。[项目仓库](https://github.com/RizzleCi/Library-manager)
 
 **16年javascript学习路线制定，指导新人学习**
 
