@@ -2,9 +2,8 @@
 menu:
   首页: /
   归档: /archives
-  关于: /about
-  wwwwhat?: /wwwwhat
-rss: /atom.xml
+  随笔: /wwwwhat
+# rss: /atom.xml
 
 # Content
 excerpt_link: Read More
@@ -13,13 +12,12 @@ fancybox: true
 # Sidebar
 sidebar: right
 widgets:
-- about
-- category
-- tag
-- tagcloud
+# - about
 - archive
-- recent_posts
-- blogroll
+# - tagcloud
+- tag
+# - recent_posts
+# - blogroll
 
 # display widgets at the bottom of index pages (pagination == 2)
 index_widgets:

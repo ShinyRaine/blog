@@ -27,17 +27,20 @@
 
 .article-header
   padding: article-padding
-  border-bottom: 1px solid color-border
+  text-align: center
 
 .article-title
+  padding: article-padding
   text-decoration: none
-  font-size: 2em
+  border-bottom: 1px solid color-border
   font-weight: bold
   color: color-default
+  font-size: 1.5em
   line-height: line-height-title
   transition: color 0.2s
   a&:hover
     color: color-link
+    border-bottom: 1px solid color-link
 
 .article-entry
   @extend $base-style
@@ -122,18 +125,19 @@
       height: 100%
       margin-top: 0
 
+.article-more-link
+  text-align: center
 .article-more-link a
   display: inline-block
   line-height: 1em
   padding: 6px 15px
   border-radius: 15px
-  background: color-background
-  color: color-grey
-  text-shadow: 0 1px #fff
+  background: #dc998b
+  color: #fff
   text-decoration: none
+  transition: 0.2s
   &:hover
     background: color-link
-    color: #fff
     text-decoration: none
     text-shadow: 0 1px darken(color-link, 20%)
 
